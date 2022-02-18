@@ -1,0 +1,358 @@
+
+* {margin: 0;  
+  padding: 3;
+  box-sizing: inherit;}  
+  html {
+  font-size: 80%;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+    
+    body{  
+      font-family: 
+
+      "Cormorant Garamond", sans-serif;
+color: #000000
+background-color: white;
+height: max-content;
+      
+  }  
+    
+  nav
+   {margin: 0000;
+     position: sticky;
+     padding-top: 0;
+    padding-bottom: 1rem;
+    background-color: white;
+ }
+ .nav{
+  margin-top: 0px;
+  position: sticky;
+  width: 100rem;
+  height: 3rem;
+  position: fixed;
+  background-color: white;
+  opacity: 90%;
+  border-bottom: solid;
+  border-bottom-width: 1px;
+ }
+
+  .main {  
+   padding-top: 3rem;
+   padding-left: 2rem;
+   padding-right: 2rem;
+    position: inherit;
+max-width: 100rem;
+margin: 4rem auto;
+display: grid;
+grid-template-columns: 2fr 2fr;
+gap: 0rem;
+grid-template-rows: auto repeat(2, 20rem) auto;
+gap: 7rem;
+   
+  
+  }  
+
+
+
+
+  .logo--1 {  
+  position:inherit;
+  left: 50%;
+  }
+    .koszyk{  
+     
+     position: inherit;
+     left: 95%;
+    }  
+    
+    .first{  
+      
+      position: inherit;
+     background-color: white;
+       padding-top: 6rem;
+       display: grid;
+grid-template-columns: 2fr 3fr;  
+gap: 1rem; 
+     
+    }  
+.wstęp{
+  margin-left: 0rem;
+  height:28rem;
+  width:45rem;
+  padding-top: 3rem;
+  padding-left: 7rem;
+  margin-bottom: 3rem;
+  position: inherit;
+  left: 10%;
+  background-image: url(Ellipse\ 5.svg); 
+
+  
+  background-size: 75%;
+  background-repeat: no-repeat;
+  
+  
+}
+.tekst1{  
+width: 10%;            
+    }  
+.rower1{  
+    margin-top: 10rem;
+    padding-left: 30%;
+    width: 50%;
+    left: 40%;
+  
+ }  
+ .rower1--rower1{
+size: 80%;
+position: inherit;
+left:90%;
+ }
+ 
+    .tekst1--tekst{  
+      margin-left: 3rem;
+      margin-bottom: 4rem;
+      font-size: 115%;
+    }  
+
+    .btn--rower{
+      font-family: "Cormorant Garamond";
+      font-style: italic;
+      font-weight: bold;
+      text-align: center;
+      color: #1F5952;
+      margin-left: 1.5rem;
+      border-radius: 50px;
+      padding-top: 8px;
+      padding-left: 30px;
+      padding-right: 30px;
+      padding-bottom: 8px;
+      background-color: white;
+      background-color: white;
+    }
+.btn-szosa{
+font-family: "Cormorant Garamond";
+font-style: italic;
+font-weight: bold;
+text-align: center;
+color: #1F5952;
+margin-left: 1.5rem;
+border-radius: 50px;
+padding-top: 8px;
+padding-left: 30px;
+padding-right: 30px;
+padding-bottom: 8px;
+background-color: white;
+background-color: white;
+background-color: white;
+}
+.btn-goral{
+  font-family: "Cormorant Garamond";
+font-style: italic;
+font-weight: bold;
+text-align: center;
+color: #1F5952;
+background-color: white;
+margin-left: 1.5rem;
+border-radius: 50px;
+padding-top: 8px;
+padding-left: 30px;
+padding-right: 30px;
+padding-bottom: 8px;
+background-color: white;
+}
+.btn-miejski{
+font-family: "Cormorant Garamond";
+font-style: italic;
+font-weight: bold;
+text-align: center;
+color: #1F5952;
+background-color: white;
+margin-left: 1.5rem;
+border-radius: 50px;
+padding-top: 8px;
+padding-left: 30px;
+padding-right: 30px;
+padding-bottom: 8px;
+background-color: white;
+}
+.btn-wszystkie{
+  font-family: "Cormorant Garamond";
+font-style: italic;
+font-weight: bold;
+text-align: center;
+color: #1F5952;
+background-color: white;
+margin-left: 1.5rem;
+border-radius: 50px;
+padding-top: 8px;
+padding-left: 30px;
+padding-right: 30px;
+padding-bottom: 8px;
+}
+h1{ 
+  }  
+  h2{
+  
+  text-align: center;
+  font-size: 3rem;   
+  }  
+h3{
+  font-size: 1.3rem;
+}
+h4{
+  font-size: 1.3rem;
+}
+h5{
+  font-size: 1.3rem;
+}
+  .tekst2{  
+width: 88%;  
+margin-top: 2rem;
+margin-bottom: 4rem;
+font-size: 115%; 
+    }  
+.tekst3{
+width: 88%;  
+margin-top: 2rem;
+margin-bottom: 4rem;
+font-size: 115%; 
+}
+.tekst4{
+width: 88%;  
+margin-top: 2rem;
+margin-bottom: 4rem;
+font-size: 115%; 
+}
+.filtry{
+  display: grid;
+  grid-template-columns: 5.5fr 4.5fr;
+  margin-top: 5rem;
+  margin-left: 3rem;
+}
+.typ-tekst{
+  margin-bottom: 1.5rem;
+}
+.kolor-tekst{
+  margin-bottom: 1rem;
+}
+.active-filter{
+  background-color: #439288;
+}
+.hidden{
+  opacity: 0%;
+}
+.btn-filtry--kolor{
+  height: 45%;
+  width: 200%;
+  color: white;
+  background-color: white;
+  display: table-row;
+  gap:1rem;
+
+}
+
+.btn-filtry--kolor0{
+  width:2rem;
+  height: 2rem;
+  background-color: white;
+  background-image: url(Ellipse\ 8.svg); 
+  background-size: 100%; 
+  background-repeat: no-repeat;
+  background-position: center;
+  border-radius: 100px;
+  border-style: none;
+  margin: 10px;
+}
+
+.btn-filtry--kolor1{
+  width:2rem;
+  height: 2rem;
+  background-color: white;
+  background-image: url(Ellipse\ 9.svg); 
+  background-size: 100%; 
+  background-repeat: no-repeat;
+  background-position: center;
+  border-radius: 100px;
+  border-style: none;
+  margin: 10px;
+}
+
+.btn-filtry--kolor2{
+  width:2rem;
+  height: 2rem;
+  background-color: white;
+  background-image: url(Ellipse\ 10.svg); 
+  background-size: 100%; 
+  background-repeat: no-repeat;
+  background-position: center;
+  border-radius: 100px;
+  border-style: none;
+  margin: 8px;
+}
+.btn-filtry--kolor3{
+  width:2rem;
+  height: 2rem;
+  background-color: white;
+  background-image: url(Ellipse\ 11.svg); 
+  background-size: 100%; 
+  background-repeat: no-repeat;
+  background-position: center;
+  border-radius: 100px;
+  border-style: none;
+  margin: 8px;
+}
+.btn-filtry--kolor4{
+  width:2rem;
+  height: 2rem;
+  background-color: white;
+  background-image: url(Ellipse\ 12.svg); 
+  background-size: 100%; 
+  background-repeat: no-repeat;
+  background-position: center;
+  border-radius: 100px;
+  border-style: none;
+  margin: 8px;
+}
+.btn-filtry--kolor5{
+  width:2rem;
+  height: 2rem;
+  background-color: white;
+  background-image: url(Ellipse\ 13.svg); 
+  background-size: 100%; 
+  background-repeat: no-repeat;
+  background-position: center;
+  border-radius: 100px;
+  border-style: none;
+  margin: 8px;
+}
+.btn-filtry--kolor6{
+  width:2rem;
+  height: 2rem;
+  background-color: white;
+  background-image: url(Ellipse\ 14.svg); 
+  background-size: 100%; 
+  background-repeat: no-repeat;
+  background-position: center;
+  border-radius: 100px;
+  border-style: none;
+  margin: 8px;
+}
+.display{
+        
+  position: inherit;
+  background-color: white;
+    padding-top: 6rem;
+    display: grid;
+grid-template-columns: 2fr 2fr ;  
+gap: 1rem; 
+margin-left: 3rem;
+}
+.wyświetlany-rower{
+  border: solid;
+  padding: 1%;
+  text-align: center;
+}
+.ukryte{
+  opacity: 0;
+}
