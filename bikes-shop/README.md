@@ -1,3 +1,9 @@
+# My first fully independent project!
+
+My first independent project. Completly ouside of any coureses or books!
+
+This is a bike shop page. It will allow the user to sort through avilable bikes based no bike type and colour.
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
