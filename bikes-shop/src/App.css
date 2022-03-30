@@ -1,0 +1,34 @@
+.introduction {
+  display: grid;
+  grid-template-columns: 2fr 2fr;
+  gap: 0rem;
+}
+.choice-btns {
+  display: grid;
+  grid-template-columns: 2fr 2fr;
+  gap: 0rem;
+}
+h2 {
+  text-align: center;
+}
+.content {
+  display: grid;
+  grid-template-columns: 2fr 2fr;
+  gap: 0rem;
+  grid-template-rows: auto repeat(2, 20rem) auto;
+  gap: 7rem;
+}
+.bike-section {
+  display: grid;
+  grid-template-columns: 2fr 2fr 2fr;
+  gap: 0rem;
+}
+
+.bike-container {
+  border: groove;
+  width: 16rem;
+  padding: 1rem;
+}
+.bike-type-img {
+  width: 15rem;
+}
