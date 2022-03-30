@@ -2,49 +2,20 @@ import ExampleBike from "./img/bike-1.svg";
 import FirstBikeImg from "./img/bike-2.svg";
 import SecondBikeImg from "./img/bike-3.svg";
 import ThirdBikeImg from "./img/bike-4.svg";
+import { BikesPage, typesArr } from "./bikesPage.js";
+import { bikes } from "./bikesPage.js";
+import { DisplayContent } from "./App.js";
+import { SelectTypeBtn } from "./bikesPage.js";
 
 // with logic to show ALL bikes- the same as bikes from nav
 
-const AllBikes = function ({ props }) {
-  return (
-    <button>
-      <p>{props}</p>
-      Pokaż rowery!
-    </button>
-  );
-};
+const ShowBikes = ({ text, ShowBikes }) => (
+  <button onClick={ShowBikes}>
+    <p>{text}</p>
+  </button>
+);
 
-// filtered to only show szosa
-const FirstBike = ({ props }) => {
-  return (
-    <button>
-      <p>{props}</p>
-      Szosa
-    </button>
-  );
-};
-
-// filtered to only show góral
-const SecondBike = ({ props }) => {
-  return (
-    <button>
-      <p>{props}</p>
-      Góral
-    </button>
-  );
-};
-// filtered to only show miejski
-
-const ThirdBike = ({ props }) => {
-  return (
-    <button>
-      <p>{props}</p>
-      Miejski
-    </button>
-  );
-};
-
-const bikeButtons = { AllBikes, FirstBike, SecondBike, ThirdBike };
+const displayAll = (bikes) => console.log(<BikesPage />);
 
 const HomePage = () => {
   return (
@@ -58,7 +29,11 @@ const HomePage = () => {
             manufakturze w Szczytnie. Świetnie sprawdzą się zarówno na leśnej
             drodze, jak i w miejskiej dżungli.
           </p>
-          <AllBikes />
+          <SelectTypeBtn
+            text="Pokaż rowery!"
+            props={typesArr.filter((type) => type.data === "all")}
+            selectType={console.log(bikes)}
+          />
         </div>
         <img src={ExampleBike} alt="Rysunkowy rower" />
       </div>
@@ -74,7 +49,12 @@ const HomePage = () => {
             Waży już od 7,8kg!
           </p>
 
-          <FirstBike />
+          <SelectTypeBtn
+            props={typesArr.filter((type) => type.data === "szosa")}
+            selectType={() =>
+              console.log(bikes.filter((bike) => bike.type.includes("szosa")))
+            }
+          />
         </div>
         <div>
           {" "}
@@ -91,7 +71,12 @@ const HomePage = () => {
             razie potrzeby możesz na nim pokonać także górski strumień. Nigdy
             Cię nie zawiedzie.
           </p>
-          <SecondBike />
+          <SelectTypeBtn
+            props={typesArr.filter((type) => type.data === "góral")}
+            selectType={() =>
+              console.log(bikes.filter((bike) => bike.type.includes("szosa")))
+            }
+          />
         </div>
         <div>
           <img src={SecondBikeImg} alt="Rower typu góral" />
@@ -106,7 +91,12 @@ const HomePage = () => {
             warunkach. Dojedziesz nim do pracy, na uczelnię, ale także na piknik
             pod miastem, ponieważ nie ogranicza go jedynie asfalt.
           </p>
-          <ThirdBike />
+          <SelectTypeBtn
+            props={typesArr.filter((type) => type.data === "miejski")}
+            selectType={() =>
+              console.log(bikes.filter((bike) => bike.type.includes("szosa")))
+            }
+          />
         </div>
         <img src={ThirdBikeImg} alt="Rower typu miejskiego" />
       </div>

@@ -17,7 +17,7 @@ function App() {
 }
 ////////////////////Display Control//////////
 const Nav = () => {
-  const [page, setPage] = React.useState(BikesPage);
+  const [page, setPage] = React.useState(HomePage);
   const handleChange = (event) => {
     console.log(event);
     if (event.target.closest(".btn-nav").dataset.page === "home")
@@ -29,8 +29,8 @@ const Nav = () => {
   return (
     <div>
       <div>
-        <HomePageBtn displayPage={handleChange} />{" "}
-        <BikesPageBtn displayPage={handleChange} />{" "}
+        <HomePageBtn displayPage={handleChange} Item={HomeItem} />{" "}
+        <BikesPageBtn displayPage={handleChange} Item={BikesItem} />{" "}
         <img src={logo} className="App-logo" alt="logo sklepu" />
       </div>
       <DisplayContent Page={() => page} />
@@ -38,13 +38,12 @@ const Nav = () => {
   );
 };
 const DisplayContent = ({ Page }) => {
-  console.log(Page());
   return <Page />;
 };
 
 /////////////////////////////Buttons///////////
 
-const HomePageBtn = ({ displayPage }) => {
+const HomePageBtn = ({ displayPage, Item }) => {
   return (
     <span>
       <button
@@ -52,12 +51,12 @@ const HomePageBtn = ({ displayPage }) => {
         data-page="home"
         onClick={displayPage}
       >
-        <img src={home} alt="Ikona strony domowej"></img>
+        <Item />
       </button>
     </span>
   );
 };
-const BikesPageBtn = ({ displayPage }) => {
+const BikesPageBtn = ({ displayPage, Item }) => {
   return (
     <span>
       <button
@@ -65,11 +64,14 @@ const BikesPageBtn = ({ displayPage }) => {
         data-page="bikes"
         onClick={displayPage}
       >
-        <img src={bikeIcon} alt="Ikona strony domowej"></img>
+        <Item />
       </button>
     </span>
   );
 };
+
+const HomeItem = () => <img src={home} alt="Ikona strony domowej"></img>;
+const BikesItem = () => <img src={bikeIcon} alt="Ikona katalogu rowerów"></img>;
 ///////////////////////
 
 const CartPage = () => {
