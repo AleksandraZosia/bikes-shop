@@ -19,7 +19,6 @@ function App() {
 const Nav = () => {
   const [page, setPage] = React.useState(HomePage);
   const handleChange = (event) => {
-    console.log(event);
     if (event.target.closest(".btn-nav").dataset.page === "home")
       setPage(HomePage);
     if (event.target.closest(".btn-nav").dataset.page === "bikes")
@@ -28,10 +27,10 @@ const Nav = () => {
   };
   return (
     <div>
-      <div>
+      <div className="nav">
         <HomePageBtn displayPage={handleChange} Item={HomeItem} />{" "}
         <BikesPageBtn displayPage={handleChange} Item={BikesItem} />{" "}
-        <img src={logo} className="App-logo" alt="logo sklepu" />
+        <img src={logo} className="logo" alt="logo sklepu" />
       </div>
       <DisplayContent Page={() => page} />
     </div>

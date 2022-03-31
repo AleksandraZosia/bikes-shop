@@ -129,7 +129,7 @@ const SelectColourBtn = ({ props, selectBikeByColor }) => {
             onClick={selectBikeByColor}
             key={el.objectID}
           >
-            <img src={el.img} alt={el.data} />
+            <img className="color" src={el.img} alt={el.data} />
           </button>
         ))}
       </>

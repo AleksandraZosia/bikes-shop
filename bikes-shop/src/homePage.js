@@ -2,26 +2,14 @@ import ExampleBike from "./img/bike-1.svg";
 import FirstBikeImg from "./img/bike-2.svg";
 import SecondBikeImg from "./img/bike-3.svg";
 import ThirdBikeImg from "./img/bike-4.svg";
-import { BikesPage, typesArr } from "./bikesPage.js";
-import { bikes } from "./bikesPage.js";
+import { BikesPage, typesArr, bikes, SelectTypeBtn } from "./bikesPage.js";
 import { DisplayContent } from "./App.js";
-import { SelectTypeBtn } from "./bikesPage.js";
-
-// with logic to show ALL bikes- the same as bikes from nav
-
-const ShowBikes = ({ text, ShowBikes }) => (
-  <button onClick={ShowBikes}>
-    <p>{text}</p>
-  </button>
-);
-
-const displayAll = (bikes) => console.log(<BikesPage />);
 
 const HomePage = () => {
   return (
     <div className="home-page">
       <div className="introduction">
-        <div>
+        <div className="paragraph bikes-introduction">
           <h1>Wybierz się na Mazury</h1>
 
           <p>
@@ -35,11 +23,19 @@ const HomePage = () => {
             selectType={console.log(bikes)}
           />
         </div>
-        <img src={ExampleBike} alt="Rysunkowy rower" />
+        <div className="example-bike">
+          {" "}
+          <img src={ExampleBike} alt="Rysunkowy rower" />
+        </div>
       </div>
+
       <h2>Jaki model jest idealny dla Ciebie?</h2>
       <div className="content">
-        <div className="first-bike">
+        <div>
+          {" "}
+          <img src={FirstBikeImg} alt="Rower typu szosa" />
+        </div>
+        <div className="paragraph first-bike">
           <p>
             <strong>Szosa</strong>
           </p>
@@ -56,12 +52,8 @@ const HomePage = () => {
             }
           />
         </div>
-        <div>
-          {" "}
-          <img src={FirstBikeImg} alt="Rower typu szosa" />
-        </div>
 
-        <div className="second-bike">
+        <div className="paragraph second-bike">
           <p>
             <strong>Góral</strong>
           </p>
@@ -81,8 +73,10 @@ const HomePage = () => {
         <div>
           <img src={SecondBikeImg} alt="Rower typu góral" />
         </div>
-
-        <div className="third-bike">
+        <div>
+          <img src={ThirdBikeImg} alt="Rower typu miejskiego" />
+        </div>
+        <div className="paragraph third-bike">
           <p>
             <strong>Miejski</strong>
           </p>
@@ -98,7 +92,6 @@ const HomePage = () => {
             }
           />
         </div>
-        <img src={ThirdBikeImg} alt="Rower typu miejskiego" />
       </div>
     </div>
   );

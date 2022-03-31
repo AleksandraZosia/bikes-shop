@@ -1,7 +1,10 @@
 .introduction {
   display: grid;
-  grid-template-columns: 2fr 2fr;
-  gap: 0rem;
+  grid-template-columns: 4fr 2.5fr;
+  gap: 6rem;
+}
+.bikes-introduction {
+  padding: 3rem;
 }
 .choice-btns {
   display: grid;
@@ -14,7 +17,7 @@ h2 {
 .content {
   display: grid;
   grid-template-columns: 2fr 2fr;
-  gap: 0rem;
+  gap: 6rem;
   grid-template-rows: auto repeat(2, 20rem) auto;
   gap: 7rem;
 }
@@ -31,4 +34,59 @@ h2 {
 }
 .bike-type-img {
   width: 15rem;
+}
+
+.btn-select-type {
+  width: 7rem;
+  height: 2rem;
+  border-radius: 50px;
+  background-color: white;
+}
+
+.App {
+  width: 100%;
+  background-color: white;
+}
+.paragraph {
+  margin-left: 1rem;
+  margin-bottom: 2rem;
+}
+
+.nav {
+  position: fixed;
+  background-color: white;
+  background: solid;
+  width: 100%;
+  padding: 0.5rem;
+}
+.btn-nav {
+  background-color: white;
+  border: none;
+}
+
+.logo {
+  position: inherit;
+  left: 48%;
+}
+.example-bike {
+  margin-top: 6rem;
+}
+
+.choice-btns {
+  padding-top: 4rem;
+  padding-bottom: 2rem;
+}
+
+.btn-select-color {
+  height: fit-content;
+  width: fit-content;
+  border-radius: 50px;
+  border: none;
+  margin-right: 2rem;
+  background: none;
+}
+
+.color {
+  width: 2rem;
+  height: 2rem;
 }
