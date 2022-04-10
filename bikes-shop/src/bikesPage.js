@@ -64,43 +64,38 @@ export const bikes = [
   },
 ];
 
-const BikesPage = (props) => {
-  const RenderThings = ({ choosenType }) => {
-    const [filteredBikes, setFilterdedBikes] = React.useState(
-      choosenType.img ? choosenType : bikes
-    );
-    const filterBikes = (event) => {
-      const target = event.target;
-      return target.closest(".btn-select-color")
-        ? setFilterdedBikes(bikesByColor(bikes, target))
-        : setFilterdedBikes(bikesByType(bikes, target));
-    };
+const BikesPage = ({ choosenType = bikes }) => {
+  console.log(choosenType);
 
-    return (
-      <>
-        <span className="choice-btns">
-          <div className="choose-type">
-            <p>Typ roweru</p>
-            <SelectTypeBtn props={typesArr} selectType={filterBikes} />
-          </div>
-          <SelectColourBtn props={colorsArr} selectBikeByColor={filterBikes} />
-        </span>
-        <ShowBikes bikes={filteredBikes} />
-      </>
-    );
+  const [filteredBikes, setFilterdedBikes] = React.useState(choosenType);
+  const filterBikes = (event) => {
+    const target = event.target;
+    return target.closest(".btn-select-color")
+      ? setFilterdedBikes(bikesByColor(bikes, target))
+      : setFilterdedBikes(bikesByType(bikes, target));
   };
 
   return (
-    <div className="bikes-page">
-      <RenderThings choosenType={props} />
-    </div>
+    <>
+      <span className="choice-btns">
+        <div className="choose-type">
+          <p>Typ roweru</p>
+          <SelectTypeBtn creationArr={typesArr} selectType={filterBikes} />
+        </div>
+        <SelectColourBtn
+          creationArr={colorsArr}
+          selectBikeByColor={filterBikes}
+        />
+      </span>
+      <ShowBikes bikes={filteredBikes} />
+    </>
   );
 };
 
-export const SelectTypeBtn = ({ props, selectType, text = "" }) => {
+export const SelectTypeBtn = ({ creationArr, selectType, text = "" }) => {
   return (
     <>
-      {props.map((type) => {
+      {creationArr.map((type) => {
         return (
           <span key={type.objectID}>
             <button
@@ -117,12 +112,12 @@ export const SelectTypeBtn = ({ props, selectType, text = "" }) => {
   );
 };
 
-const SelectColourBtn = ({ props, selectBikeByColor }) => {
+const SelectColourBtn = ({ creationArr, selectBikeByColor }) => {
   return (
     <div className="choose-colour">
       <p>Kolor</p>
       <>
-        {props.map((el) => (
+        {creationArr.map((el) => (
           <button
             className="btn-select-color"
             data-color={el.data}

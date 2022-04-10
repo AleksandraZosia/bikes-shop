@@ -2,10 +2,12 @@ import ExampleBike from "./img/bike-1.svg";
 import FirstBikeImg from "./img/bike-2.svg";
 import SecondBikeImg from "./img/bike-3.svg";
 import ThirdBikeImg from "./img/bike-4.svg";
+import backgroundImg from "./img/Ellipse-5.svg";
 import { BikesPage, typesArr, bikes, SelectTypeBtn } from "./bikesPage.js";
 import { DisplayContent } from "./App.js";
 
-const HomePage = () => {
+export const HomePage = ({ onChange }) => {
+  console.log(onChange);
   return (
     <div className="home-page">
       <div className="introduction">
@@ -19,8 +21,8 @@ const HomePage = () => {
           </p>
           <SelectTypeBtn
             text="Pokaż rowery!"
-            props={typesArr.filter((type) => type.data === "all")}
-            selectType={console.log(bikes)}
+            creationArr={typesArr.filter((type) => type.data === "all")}
+            selectType={onChange("bikes")}
           />
         </div>
         <div className="example-bike">
@@ -46,10 +48,11 @@ const HomePage = () => {
           </p>
 
           <SelectTypeBtn
-            props={typesArr.filter((type) => type.data === "szosa")}
-            selectType={() =>
-              console.log(bikes.filter((bike) => bike.type.includes("szosa")))
-            }
+            creationArr={typesArr.filter((type) => type.data === "szosa")}
+            selectType={onChange(
+              "bikes",
+              bikes.filter((bike) => bike.type === "szosa")
+            )}
           />
         </div>
 
@@ -64,10 +67,11 @@ const HomePage = () => {
             Cię nie zawiedzie.
           </p>
           <SelectTypeBtn
-            props={typesArr.filter((type) => type.data === "góral")}
-            selectType={() =>
-              console.log(bikes.filter((bike) => bike.type.includes("szosa")))
-            }
+            creationArr={typesArr.filter((type) => type.data === "góral")}
+            selectType={onChange(
+              "bikes",
+              bikes.filter((bike) => bike.type === "góral")
+            )}
           />
         </div>
         <div>
@@ -86,15 +90,14 @@ const HomePage = () => {
             pod miastem, ponieważ nie ogranicza go jedynie asfalt.
           </p>
           <SelectTypeBtn
-            props={typesArr.filter((type) => type.data === "miejski")}
-            selectType={() =>
-              console.log(bikes.filter((bike) => bike.type.includes("szosa")))
-            }
+            creationArr={typesArr.filter((type) => type.data === "miejski")}
+            selectType={onChange(
+              "bikes",
+              bikes.filter((bike) => bike.type === "miejski")
+            )}
           />
         </div>
       </div>
     </div>
   );
 };
-
-export { HomePage };

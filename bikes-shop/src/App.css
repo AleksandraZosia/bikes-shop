@@ -1,9 +1,14 @@
 .introduction {
+  height: 28rem;
   display: grid;
   grid-template-columns: 4fr 2.5fr;
   gap: 6rem;
+  position: relative;
 }
+
 .bikes-introduction {
+  background-image: url(./img/Ellipse-5.svg);
+  background-repeat: no-repeat;
   padding: 3rem;
 }
 .choice-btns {
@@ -17,9 +22,11 @@ h2 {
 .content {
   display: grid;
   grid-template-columns: 2fr 2fr;
-  gap: 6rem;
+  gap: 4rem;
   grid-template-rows: auto repeat(2, 20rem) auto;
   gap: 7rem;
+  position: relative;
+  place-items: center;
 }
 .bike-section {
   display: grid;
@@ -37,23 +44,27 @@ h2 {
 }
 
 .btn-select-type {
+  color: #1f5952;
   width: 7rem;
   height: 2rem;
   border-radius: 50px;
+  border-color: #1f5952;
   background-color: white;
 }
 
 .App {
   width: 100%;
   background-color: white;
+  font-family: "Cormorant Garamond";
 }
 .paragraph {
-  margin-left: 1rem;
+  padding: 2rem;
+  margin-left: 0rem;
   margin-bottom: 2rem;
 }
 
 .nav {
-  position: fixed;
+  position: sticky;
   background-color: white;
   background: solid;
   width: 100%;
@@ -89,4 +100,15 @@ h2 {
 .color {
   width: 2rem;
   height: 2rem;
+}
+
+p {
+  width: 22rem;
+  margin: 2rem;
+}
+HomePage {
+  margin-top: 2rem;
+}
+h2 {
+  margin-bottom: 3rem;
 }
