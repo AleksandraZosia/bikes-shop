@@ -1,15 +1,15 @@
-import FirstBikeImg from "./img/bike-2.svg";
-import SecondBikeImg from "./img/bike-3.svg";
-import ThirdBikeImg from "./img/bike-4.svg";
-import allColors from "./img/Ellipse 8.svg";
-import color1 from "./img/Ellipse 9.svg";
-import color2 from "./img/Ellipse 10.svg";
-import color3 from "./img/Ellipse 11.svg";
-import color4 from "./img/Ellipse 12.svg";
-import color5 from "./img/Ellipse 13.svg";
-import color6 from "./img/Ellipse 14.svg";
+import FirstBikeImg from "../img/bike-2.svg";
+import SecondBikeImg from "../img/bike-3.svg";
+import ThirdBikeImg from "../img/bike-4.svg";
+import allColors from "../img/Ellipse 8.svg";
+import color1 from "../img/Ellipse 9.svg";
+import color2 from "../img/Ellipse 10.svg";
+import color3 from "../img/Ellipse 11.svg";
+import color4 from "../img/Ellipse 12.svg";
+import color5 from "../img/Ellipse 13.svg";
+import color6 from "../img/Ellipse 14.svg";
 import React, { useState } from "react";
-import { DisplayContent } from "./App.js";
+import { DisplayContent } from "../App.js";
 
 const colorsArr = [
   { img: allColors, data: "wielokolorowy", objectID: 1 },
@@ -30,7 +30,7 @@ export const typesArr = [
 export const bikes = [
   {
     img: FirstBikeImg,
-    type: "szosa",
+    type: ["szosa", "all"],
     colors: ["biały", "różowy", "beżowy", "czarny"],
     wheels: "Koła 700c 28”",
     weight: "7,5 kg",
@@ -39,7 +39,7 @@ export const bikes = [
   },
   {
     img: SecondBikeImg,
-    type: "góral",
+    type: ["góral", "all"],
     colors: ["wielokolorowy", "niebieski", "zielony"],
     wheels: "Koła 700c 28”",
     weight: "7,5 kg",
@@ -48,7 +48,7 @@ export const bikes = [
   },
   {
     img: ThirdBikeImg,
-    type: "miejski",
+    type: ["miejski", "all"],
     colors: [
       "biały",
       "różowy",
@@ -65,8 +65,6 @@ export const bikes = [
 ];
 
 const BikesPage = ({ choosenType = bikes }) => {
-  console.log(choosenType);
-
   const [filteredBikes, setFilterdedBikes] = React.useState(choosenType);
   const filterBikes = (event) => {
     const target = event.target;
@@ -76,25 +74,30 @@ const BikesPage = ({ choosenType = bikes }) => {
   };
 
   return (
-    <>
-      <span className="choice-btns">
+    <div className="main">
+      <div className="choice-btns">
         <div className="choose-type">
-          <p>Typ roweru</p>
+          <p>Typ</p>
+
           <SelectTypeBtn creationArr={typesArr} selectType={filterBikes} />
         </div>
-        <SelectColourBtn
-          creationArr={colorsArr}
-          selectBikeByColor={filterBikes}
-        />
-      </span>
+        <div>
+          <p>Kolor</p>
+          <SelectColourBtn
+            creationArr={colorsArr}
+            selectBikeByColor={filterBikes}
+          />
+        </div>
+      </div>
       <ShowBikes bikes={filteredBikes} />
-    </>
+    </div>
   );
 };
 
 export const SelectTypeBtn = ({ creationArr, selectType, text = "" }) => {
   return (
     <>
+      {" "}
       {creationArr.map((type) => {
         return (
           <span key={type.objectID}>
@@ -115,7 +118,6 @@ export const SelectTypeBtn = ({ creationArr, selectType, text = "" }) => {
 const SelectColourBtn = ({ creationArr, selectBikeByColor }) => {
   return (
     <div className="choose-colour">
-      <p>Kolor</p>
       <>
         {creationArr.map((el) => (
           <button
@@ -163,8 +165,8 @@ const ShowBikes = ({ bikes }) => {
           <img className="bike-type-img" src={bike.img} />
 
           <p>
-            {stringToUpperCase(bike.type)} - {bike.colors.length} kolory do
-            wyboru
+            {stringToUpperCase(bike.type[0])} - {bike.colors.length}{" "}
+            {bike.colors.length <= 4 ? "kolory" : "kolorów"} do wyboru
           </p>
           <p>{bike.gears} kombinacje przerzutek</p>
           <p>{bike.wheels}</p>

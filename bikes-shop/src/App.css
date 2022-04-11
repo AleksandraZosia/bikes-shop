@@ -14,6 +14,7 @@
 .choice-btns {
   display: grid;
   grid-template-columns: 2fr 2fr;
+  grid-template-rows: auto;
   gap: 0rem;
 }
 h2 {
@@ -29,6 +30,7 @@ h2 {
   place-items: center;
 }
 .bike-section {
+  margin: 10px;
   display: grid;
   grid-template-columns: 2fr 2fr 2fr;
   gap: 0rem;
@@ -37,10 +39,16 @@ h2 {
 .bike-container {
   border: groove;
   width: 16rem;
-  padding: 1rem;
+  padding: 20px;
+  box-shadow: 5px 8px 15px;
+  text-align: left;
 }
 .bike-type-img {
   width: 15rem;
+}
+
+.main {
+  margin-left: 10px;
 }
 
 .btn-select-type {
@@ -64,9 +72,11 @@ h2 {
 }
 
 .nav {
-  position: sticky;
-  background-color: white;
-  background: solid;
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  z-index: 1;
+  background-color: rgba(255, 255, 255, 0.9);
   width: 100%;
   padding: 0.5rem;
 }
@@ -104,7 +114,7 @@ h2 {
 
 p {
   width: 22rem;
-  margin: 2rem;
+  margin: 20px;
 }
 HomePage {
   margin-top: 2rem;

@@ -1,9 +1,10 @@
+import { Outlet, Link } from "react-router-dom";
 import home from "./img/home.svg";
 import bikeIcon from "./img/bike-icon.svg";
 import logo from "./img/logo.svg";
 import "./App.css";
-import { HomePage } from "./homePage.js";
-import { bikes, BikesPage } from "./bikesPage.js";
+import HomePage from "./routes/homePage.js";
+import { bikes, BikesPage } from "./routes/bikesPage.js";
 import React, { useState } from "react";
 
 function App() {
@@ -16,11 +17,11 @@ function App() {
   };
   return (
     <div className="App">
+      {" "}
       <Nav onChange={handleChange} />
-
-      {/* <div className="content"> */}
-      <Page onChange={handleChange} choosenType={filteredBikes} />
-      {/* </div> */}
+      <div className="content">
+        <Outlet />
+      </div>
     </div>
   );
 }
@@ -28,12 +29,14 @@ function App() {
 ////////////////////Display Control//////////
 const Nav = ({ onChange }) => {
   return (
-    <div>
-      <div className="nav">
-        <NavBtn displayPage={onChange("home")} Item={HomeItem} text="home" />{" "}
-        <NavBtn displayPage={onChange("bikes")} Item={BikesItem} text="bikes" />{" "}
-        <img src={logo} className="logo" alt="logo sklepu" />
-      </div>
+    <div className="nav">
+      <Link to="/home">
+        <NavBtn text={"home"} Item={HomeItem} />
+      </Link>
+      <Link to="/bikes">
+        <NavBtn text={"bikes"} Item={BikesItem} />{" "}
+      </Link>
+      <img src={logo} className="logo" alt="logo sklepu" />
     </div>
   );
 };
@@ -41,7 +44,7 @@ const DisplayContent = ({ Page, onChange, choosenType }) => {
   return <Page onChange={onChange} choosenType={choosenType} />;
 };
 
-/////////////////////////////Buttons///////////
+// /////////////////////////////Buttons///////////
 
 const NavBtn = ({ displayPage, Item, text }) => {
   return (
