@@ -1,3 +1,4 @@
+import { useParams } from "react-router-dom";
 import FirstBikeImg from "../img/bike-2.svg";
 import SecondBikeImg from "../img/bike-3.svg";
 import ThirdBikeImg from "../img/bike-4.svg";
@@ -9,7 +10,6 @@ import color4 from "../img/Ellipse 12.svg";
 import color5 from "../img/Ellipse 13.svg";
 import color6 from "../img/Ellipse 14.svg";
 import React, { useState } from "react";
-import { DisplayContent } from "../App.js";
 
 const colorsArr = [
   { img: allColors, data: "wielokolorowy", objectID: 1 },
@@ -65,6 +65,9 @@ export const bikes = [
 ];
 
 const BikesPage = ({ choosenType = bikes }) => {
+  let parasm = useParams();
+  console.log(parasm);
+
   const [filteredBikes, setFilterdedBikes] = React.useState(choosenType);
   const filterBikes = (event) => {
     const target = event.target;
@@ -176,5 +179,7 @@ const ShowBikes = ({ bikes }) => {
     </div>
   );
 };
+
+const getBike = (id) => bikes.find((bike) => bike.objectID === id);
 
 export { BikesPage };

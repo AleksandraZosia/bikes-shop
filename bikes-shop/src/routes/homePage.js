@@ -5,7 +5,6 @@ import SecondBikeImg from "../img/bike-3.svg";
 import ThirdBikeImg from "../img/bike-4.svg";
 import backgroundImg from "../img/Ellipse-5.svg";
 import { BikesPage, typesArr, bikes, SelectTypeBtn } from "./bikesPage.js";
-import { DisplayContent } from "../App.js";
 
 export default function HomePage({}) {
   return (
@@ -48,14 +47,11 @@ export default function HomePage({}) {
             Świetnie sprawdzi się również w mieście. Jest szybki i ultralekki.
             Waży już od 7,8kg!
           </p>
-
-          {/* <SelectTypeBtn
-            creationArr={typesArr.filter((type) => type.data === "szosa")}
-            selectType={onChange(
-              "bikes",
-              bikes.filter((bike) => bike.type === "szosa")
-            )} 
-          />*/}
+          <Link to={"/bikes/1"}>
+            <SelectTypeBtn
+              creationArr={typesArr.filter((type) => type.data === "szosa")}
+            />
+          </Link>
         </div>
 
         <div className="paragraph second-bike">
@@ -68,13 +64,11 @@ export default function HomePage({}) {
             razie potrzeby możesz na nim pokonać także górski strumień. Nigdy
             Cię nie zawiedzie.
           </p>
-          {/* <SelectTypeBtn
-            creationArr={typesArr.filter((type) => type.data === "góral")}
-            selectType={onChange(
-              "bikes",
-              bikes.filter((bike) => bike.type === "góral")
-            )}
-          /> */}
+          <Link to={"/bikes/2"}>
+            <SelectTypeBtn
+              creationArr={typesArr.filter((type) => type.data === "góral")}
+            />
+          </Link>
         </div>
         <div>
           <img src={SecondBikeImg} alt="Rower typu góral" />
@@ -91,13 +85,11 @@ export default function HomePage({}) {
             warunkach. Dojedziesz nim do pracy, na uczelnię, ale także na piknik
             pod miastem, ponieważ nie ogranicza go jedynie asfalt.
           </p>
-          {/* <SelectTypeBtn
-            creationArr={typesArr.filter((type) => type.data === "miejski")}
-            selectType={onChange(
-              "bikes",
-              bikes.filter((bike) => bike.type === "miejski")
-            )}
-          /> */}
+          <Link to={"/bikes/3"}>
+            <SelectTypeBtn
+              creationArr={typesArr.filter((type) => type.data === "miejski")}
+            />{" "}
+          </Link>
         </div>
       </div>
     </div>

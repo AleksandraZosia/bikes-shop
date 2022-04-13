@@ -8,17 +8,12 @@ import { bikes, BikesPage } from "./routes/bikesPage.js";
 import React, { useState } from "react";
 
 function App() {
-  const [Page, setPage] = React.useState(() => HomePage);
   const [filteredBikes, setFilterdedBikes] = React.useState(bikes);
-  const handleChange = (page, choosenType) => () => {
-    if (page === "home") setPage(() => HomePage);
-    if (page === "bikes") setPage(() => BikesPage);
-    setFilterdedBikes(choosenType);
-  };
+
   return (
     <div className="App">
       {" "}
-      <Nav onChange={handleChange} />
+      <Nav />
       <div className="content">
         <Outlet />
       </div>
@@ -27,7 +22,7 @@ function App() {
 }
 
 ////////////////////Display Control//////////
-const Nav = ({ onChange }) => {
+const Nav = () => {
   return (
     <div className="nav">
       <Link to="/home">
@@ -40,16 +35,13 @@ const Nav = ({ onChange }) => {
     </div>
   );
 };
-const DisplayContent = ({ Page, onChange, choosenType }) => {
-  return <Page onChange={onChange} choosenType={choosenType} />;
-};
 
 // /////////////////////////////Buttons///////////
 
-const NavBtn = ({ displayPage, Item, text }) => {
+const NavBtn = ({ Item, text }) => {
   return (
     <span>
-      <button className="btn-nav" data-page={text} onClick={displayPage}>
+      <button className="btn-nav" data-page={text}>
         <Item />
       </button>
     </span>
@@ -60,5 +52,4 @@ const HomeItem = () => <img src={home} alt="Ikona strony domowej"></img>;
 const BikesItem = () => <img src={bikeIcon} alt="Ikona katalogu rowerów"></img>;
 ///////////////////////
 
-export { DisplayContent };
 export default App;

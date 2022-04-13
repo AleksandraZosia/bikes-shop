@@ -6,20 +6,21 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import HomePage from "./routes/homePage";
 import { BikesPage } from "./routes/bikesPage";
-// import HomePage from "./routes/homePage.js";
-//import { BikesPage } from "./routes/bikesPage.js";
 
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<App />}>
+          <Route index element={<HomePage />} />
           <Route path="home" element={<HomePage />}>
             <Route path="bikes" element={<BikesPage />} />
+            <Route path=":bikesID" element={<BikesPage />} />
           </Route>
           <Route path="bikes" element={<BikesPage />} />
+
           <Route
-            pat="*"
+            path="*"
             element={
               <div>
                 <p>Coś poszło nie tak... </p>
