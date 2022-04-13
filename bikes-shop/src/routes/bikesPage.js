@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import FirstBikeImg from "../img/bike-2.svg";
 import SecondBikeImg from "../img/bike-3.svg";
 import ThirdBikeImg from "../img/bike-4.svg";
@@ -65,8 +65,14 @@ export const bikes = [
 ];
 
 const BikesPage = ({ choosenType = bikes }) => {
-  let parasm = useParams();
-  console.log(parasm);
+  let params = useParams();
+  const navigate = useNavigate();
+  //let params = searchParams.set(useParams());
+
+  const filterByID = (id) => {
+    navigate("/bikes");
+    return bikes.filter((bike) => bike.objectID === parseInt(id));
+  };
 
   const [filteredBikes, setFilterdedBikes] = React.useState(choosenType);
   const filterBikes = (event) => {
@@ -92,7 +98,9 @@ const BikesPage = ({ choosenType = bikes }) => {
           />
         </div>
       </div>
-      <ShowBikes bikes={filteredBikes} />
+      <ShowBikes
+        bikes={params.bikesID ? filterByID(params.bikesID) : filteredBikes}
+      />
     </div>
   );
 };

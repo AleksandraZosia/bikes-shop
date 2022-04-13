@@ -14,11 +14,11 @@ ReactDOM.render(
         <Route path="/" element={<App />}>
           <Route index element={<HomePage />} />
           <Route path="home" element={<HomePage />}>
-            <Route path="bikes" element={<BikesPage />} />
-            <Route path=":bikesID" element={<BikesPage />} />
+            {/* <Route path="bikes" element={<BikesPage />} /> */}
           </Route>
-          <Route path="bikes" element={<BikesPage />} />
-
+          <Route path="bikes" element={<BikesPage />}>
+            <Route path=":bikesID" element={<BikesPage />} />{" "}
+          </Route>
           <Route
             path="*"
             element={
