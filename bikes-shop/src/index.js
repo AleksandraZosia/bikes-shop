@@ -6,6 +6,7 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import HomePage from "./routes/homePage";
 import { BikesPage } from "./routes/bikesPage";
+import { ShowBikes } from "./routes/displayBikes";
 
 ReactDOM.render(
   <React.StrictMode>
@@ -13,11 +14,9 @@ ReactDOM.render(
       <Routes>
         <Route path="/" element={<App />}>
           <Route index element={<HomePage />} />
-          <Route path="home" element={<HomePage />}>
-            {/* <Route path="bikes" element={<BikesPage />} /> */}
-          </Route>
+          <Route path="home" element={<HomePage />}></Route>
           <Route path="bikes" element={<BikesPage />}>
-            <Route path=":bikesID" element={<BikesPage />} />{" "}
+            <Route path=":bikesID" element={<ShowBikes />} />{" "}
           </Route>
           <Route
             path="*"

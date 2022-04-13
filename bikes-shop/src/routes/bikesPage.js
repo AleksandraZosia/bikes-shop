@@ -1,4 +1,5 @@
-import { useParams, useNavigate } from "react-router-dom";
+import { useSearchParams, Outlet, Link, NavLink } from "react-router-dom";
+
 import FirstBikeImg from "../img/bike-2.svg";
 import SecondBikeImg from "../img/bike-3.svg";
 import ThirdBikeImg from "../img/bike-4.svg";
@@ -9,7 +10,7 @@ import color3 from "../img/Ellipse 11.svg";
 import color4 from "../img/Ellipse 12.svg";
 import color5 from "../img/Ellipse 13.svg";
 import color6 from "../img/Ellipse 14.svg";
-import React, { useState } from "react";
+import React from "react";
 
 const colorsArr = [
   { img: allColors, data: "wielokolorowy", objectID: 1 },
@@ -64,61 +65,50 @@ export const bikes = [
   },
 ];
 
-const BikesPage = ({ choosenType = bikes }) => {
-  let params = useParams();
-  const navigate = useNavigate();
-  //let params = searchParams.set(useParams());
-
-  const filterByID = (id) => {
-    navigate("/bikes");
-    return bikes.filter((bike) => bike.objectID === parseInt(id));
-  };
-
-  const [filteredBikes, setFilterdedBikes] = React.useState(choosenType);
-  const filterBikes = (event) => {
-    const target = event.target;
-    return target.closest(".btn-select-color")
-      ? setFilterdedBikes(bikesByColor(bikes, target))
-      : setFilterdedBikes(bikesByType(bikes, target));
-  };
-
+const BikesPage = () => {
   return (
     <div className="main">
       <div className="choice-btns">
         <div className="choose-type">
           <p>Typ</p>
 
-          <SelectTypeBtn creationArr={typesArr} selectType={filterBikes} />
+          <SelectTypeBtn creationArr={typesArr} />
         </div>
         <div>
           <p>Kolor</p>
-          <SelectColourBtn
-            creationArr={colorsArr}
-            selectBikeByColor={filterBikes}
-          />
+          <SelectColourBtn creationArr={colorsArr} />
         </div>
       </div>
-      <ShowBikes
-        bikes={params.bikesID ? filterByID(params.bikesID) : filteredBikes}
-      />
+      <Outlet />
     </div>
   );
 };
 
-export const SelectTypeBtn = ({ creationArr, selectType, text = "" }) => {
+export const SelectTypeBtn = ({ creationArr, text = "" }) => {
+  let [searchParams, setSearchParams] = useSearchParams();
   return (
     <>
       {" "}
       {creationArr.map((type) => {
         return (
           <span key={type.objectID}>
-            <button
-              className="btn-select-type"
-              data-type={type.data}
-              onClick={selectType}
-            >
-              {text ? text : type.text}
-            </button>
+            <Link to={`/bikes/${type.data}`}>
+              {" "}
+              <button
+                className="btn-select-type"
+                data-type={searchParams.get("filter") || ""}
+                onClick={(event) => {
+                  let filter = event.target.dataset.type;
+                  if (filter) {
+                    setSearchParams({ filter });
+                  } else {
+                    setSearchParams({});
+                  }
+                }}
+              >
+                {text ? text : type.text}
+              </button>
+            </Link>
           </span>
         );
       })}
@@ -131,63 +121,23 @@ const SelectColourBtn = ({ creationArr, selectBikeByColor }) => {
     <div className="choose-colour">
       <>
         {creationArr.map((el) => (
-          <button
-            className="btn-select-color"
-            data-color={el.data}
-            onClick={selectBikeByColor}
-            key={el.objectID}
-          >
-            <img className="color" src={el.img} alt={el.data} />
-          </button>
+          <NavLink to={`/bikes/${el.data}`} key={el.objectID}>
+            {" "}
+            <button
+              className="btn-select-color"
+              data-color={el.data}
+              onClick={selectBikeByColor}
+            >
+              <img className="color" src={el.img} alt={el.data} />
+            </button>
+          </NavLink>
         ))}
       </>
     </div>
   );
 };
 
-const bikesByColor = (bikes, target) => {
-  const clicked = target.closest(".btn-select-color");
-  const selectedBike = bikes.filter((bike) =>
-    bike.colors.includes(clicked.dataset.color)
-  );
-
-  return selectedBike;
-};
-const bikesByType = (bikes, target) => {
-  const clicked = target.closest(".btn-select-type");
-  if (target.dataset.type === "all") return bikes;
-  else {
-    const selectedBikes = bikes.filter((bike) =>
-      bike.type.includes(target.dataset.type)
-    );
-
-    return selectedBikes;
-  }
-};
-
-const stringToUpperCase = (string) =>
+export const stringToUpperCase = (string) =>
   string.slice(0, 1).toUpperCase() + string.slice(1);
-
-const ShowBikes = ({ bikes }) => {
-  return (
-    <div className="bike-section">
-      {bikes.map((bike) => (
-        <div className="bike-container" key={bike.objectID}>
-          <img className="bike-type-img" src={bike.img} />
-
-          <p>
-            {stringToUpperCase(bike.type[0])} - {bike.colors.length}{" "}
-            {bike.colors.length <= 4 ? "kolory" : "kolorów"} do wyboru
-          </p>
-          <p>{bike.gears} kombinacje przerzutek</p>
-          <p>{bike.wheels}</p>
-          <p>Waga: {bike.weight}</p>
-        </div>
-      ))}
-    </div>
-  );
-};
-
-const getBike = (id) => bikes.find((bike) => bike.objectID === id);
 
 export { BikesPage };

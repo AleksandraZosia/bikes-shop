@@ -1,15 +1,11 @@
-import { Outlet, Link } from "react-router-dom";
+import { Outlet, NavLink } from "react-router-dom";
 import home from "./img/home.svg";
 import bikeIcon from "./img/bike-icon.svg";
 import logo from "./img/logo.svg";
 import "./App.css";
-import HomePage from "./routes/homePage.js";
-import { bikes, BikesPage } from "./routes/bikesPage.js";
-import React, { useState } from "react";
+import React from "react";
 
 function App() {
-  const [filteredBikes, setFilterdedBikes] = React.useState(bikes);
-
   return (
     <div className="App">
       {" "}
@@ -25,12 +21,8 @@ function App() {
 const Nav = () => {
   return (
     <div className="nav">
-      <Link to="/home">
-        <NavBtn text={"home"} Item={HomeItem} />
-      </Link>
-      <Link to="/bikes">
-        <NavBtn text={"bikes"} Item={BikesItem} />{" "}
-      </Link>
+      <NavBtn text={"home"} Item={HomeItem} />
+      <NavBtn text={"bikes"} Item={BikesItem} />{" "}
       <img src={logo} className="logo" alt="logo sklepu" />
     </div>
   );
@@ -41,9 +33,11 @@ const Nav = () => {
 const NavBtn = ({ Item, text }) => {
   return (
     <span>
-      <button className="btn-nav" data-page={text}>
-        <Item />
-      </button>
+      <NavLink to={`/${text}`}>
+        <button className="btn-nav" data-page={text}>
+          <Item />
+        </button>
+      </NavLink>
     </span>
   );
 };

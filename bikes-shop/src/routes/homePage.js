@@ -1,9 +1,7 @@
-import { Link, Outlet } from "react-router-dom";
 import ExampleBike from "../img/bike-1.svg";
 import FirstBikeImg from "../img/bike-2.svg";
 import SecondBikeImg from "../img/bike-3.svg";
 import ThirdBikeImg from "../img/bike-4.svg";
-import backgroundImg from "../img/Ellipse-5.svg";
 import { BikesPage, typesArr, bikes, SelectTypeBtn } from "./bikesPage.js";
 
 export default function HomePage({}) {
@@ -12,19 +10,15 @@ export default function HomePage({}) {
       <div className="introduction">
         <div className="paragraph bikes-introduction">
           <h1>Wybierz się na Mazury</h1>
-
           <p>
             Mazury to ultralekkie rowery tworzone z pasją w niewielkiej
             manufakturze w Szczytnie. Świetnie sprawdzą się zarówno na leśnej
             drodze, jak i w miejskiej dżungli.
-          </p>
-          <Link to={"/bikes"}>
-            {" "}
-            <SelectTypeBtn
-              text="Pokaż rowery!"
-              creationArr={typesArr.filter((type) => type.data === "all")}
-            />{" "}
-          </Link>
+          </p>{" "}
+          <SelectTypeBtn
+            text="Pokaż rowery!"
+            creationArr={typesArr.filter((type) => type.data === "all")}
+          />{" "}
         </div>
         <div className="example-bike">
           {" "}
@@ -47,11 +41,10 @@ export default function HomePage({}) {
             Świetnie sprawdzi się również w mieście. Jest szybki i ultralekki.
             Waży już od 7,8kg!
           </p>
-          <Link to={"/bikes/1"}>
-            <SelectTypeBtn
-              creationArr={typesArr.filter((type) => type.data === "szosa")}
-            />
-          </Link>
+
+          <SelectTypeBtn
+            creationArr={typesArr.filter((type) => type.data === "szosa")}
+          />
         </div>
 
         <div className="paragraph second-bike">
@@ -64,11 +57,10 @@ export default function HomePage({}) {
             razie potrzeby możesz na nim pokonać także górski strumień. Nigdy
             Cię nie zawiedzie.
           </p>
-          <Link to={"/bikes/2"}>
-            <SelectTypeBtn
-              creationArr={typesArr.filter((type) => type.data === "góral")}
-            />
-          </Link>
+
+          <SelectTypeBtn
+            creationArr={typesArr.filter((type) => type.data === "góral")}
+          />
         </div>
         <div>
           <img src={SecondBikeImg} alt="Rower typu góral" />
@@ -85,11 +77,9 @@ export default function HomePage({}) {
             warunkach. Dojedziesz nim do pracy, na uczelnię, ale także na piknik
             pod miastem, ponieważ nie ogranicza go jedynie asfalt.
           </p>
-          <Link to={"/bikes/3"}>
-            <SelectTypeBtn
-              creationArr={typesArr.filter((type) => type.data === "miejski")}
-            />{" "}
-          </Link>
+          <SelectTypeBtn
+            creationArr={typesArr.filter((type) => type.data === "miejski")}
+          />{" "}
         </div>
       </div>
     </div>
