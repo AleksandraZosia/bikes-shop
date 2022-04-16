@@ -1,4 +1,4 @@
-import { useSearchParams, Outlet, Link, NavLink } from "react-router-dom";
+import { useSearchParams, Outlet, NavLink } from "react-router-dom";
 
 import FirstBikeImg from "../img/bike-2.svg";
 import SecondBikeImg from "../img/bike-3.svg";
@@ -69,14 +69,19 @@ const BikesPage = () => {
   return (
     <div className="main">
       <div className="choice-btns">
-        <div className="choose-type">
-          <p>Typ</p>
+        <div className="bike-filter">
+          <label for="filter-by-type" className="filter-label">
+            <p>Typ roweru:</p>
+          </label>
 
-          <SelectTypeBtn creationArr={typesArr} />
+          <SelectTypeBtn creationArr={typesArr} id="filter-by-type" />
         </div>
-        <div>
-          <p>Kolor</p>
-          <SelectColourBtn creationArr={colorsArr} />
+        <div className="bike-filter">
+          <label for="filter-by-color" className="filter-label">
+            <p>Kolor:</p>
+          </label>
+
+          <SelectColourBtn creationArr={colorsArr} id="filter-by-color" />
         </div>
       </div>
       <Outlet />
@@ -86,13 +91,14 @@ const BikesPage = () => {
 
 export const SelectTypeBtn = ({ creationArr, text = "" }) => {
   let [searchParams, setSearchParams] = useSearchParams();
+
   return (
     <>
       {" "}
       {creationArr.map((type) => {
         return (
           <span key={type.objectID}>
-            <Link to={`/bikes/${type.data}`}>
+            <NavLink to={`/bikes/${type.data}`}>
               {" "}
               <button
                 className="btn-select-type"
@@ -108,7 +114,7 @@ export const SelectTypeBtn = ({ creationArr, text = "" }) => {
               >
                 {text ? text : type.text}
               </button>
-            </Link>
+            </NavLink>
           </span>
         );
       })}

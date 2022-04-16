@@ -10,7 +10,7 @@ function App() {
     <div className="App">
       {" "}
       <Nav />
-      <div className="content">
+      <div>
         <Outlet />
       </div>
     </div>

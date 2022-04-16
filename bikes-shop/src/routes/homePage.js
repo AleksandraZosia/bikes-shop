@@ -18,24 +18,26 @@ export default function HomePage({}) {
           <SelectTypeBtn
             text="Pokaż rowery!"
             creationArr={typesArr.filter((type) => type.data === "all")}
+            className="link-bikes"
+            id="btn-show-all"
           />{" "}
         </div>
         <div className="example-bike">
           {" "}
-          <img src={ExampleBike} alt="Rysunkowy rower" />
+          <img id="img-example-bike" src={ExampleBike} alt="Rysunkowy rower" />
         </div>
       </div>
 
       <h2>Jaki model jest idealny dla Ciebie?</h2>
       <div className="content">
-        <div>
-          {" "}
-          <img src={FirstBikeImg} alt="Rower typu szosa" />
-        </div>
-        <div className="paragraph first-bike">
-          <p>
-            <strong>Szosa</strong>
-          </p>
+        {" "}
+        <img
+          className="content-bike-img"
+          src={FirstBikeImg}
+          alt="Rower typu szosa"
+        />
+        <div className="paragraph bike-description">
+          <h3>Szosa</h3>
           <p>
             To rower dla miłośników prędkości i gładkich, asfaltowych tras.
             Świetnie sprawdzi się również w mieście. Jest szybki i ultralekki.
@@ -44,13 +46,12 @@ export default function HomePage({}) {
 
           <SelectTypeBtn
             creationArr={typesArr.filter((type) => type.data === "szosa")}
+            className="link-bikes"
           />
         </div>
+        <div className="paragraph bike-description" id="goral">
+          <h3>Góral</h3>
 
-        <div className="paragraph second-bike">
-          <p>
-            <strong>Góral</strong>
-          </p>
           <p>
             Pogromca w dzikim terenie. Rower na misje specjalne. Pozwala skakać
             przez przeszkody w lesie, jak i pojedzie po piaszczystej plaży. W
@@ -59,6 +60,7 @@ export default function HomePage({}) {
           </p>
 
           <SelectTypeBtn
+            className="link-bikes"
             creationArr={typesArr.filter((type) => type.data === "góral")}
           />
         </div>
@@ -68,16 +70,15 @@ export default function HomePage({}) {
         <div>
           <img src={ThirdBikeImg} alt="Rower typu miejskiego" />
         </div>
-        <div className="paragraph third-bike">
-          <p>
-            <strong>Miejski</strong>
-          </p>
+        <div className="paragraph bike-description">
+          <h3>Miejski</h3>
           <p>
             Wygodny jak fotel uszatek, pozwala na jazdę po mieście w luksusowych
             warunkach. Dojedziesz nim do pracy, na uczelnię, ale także na piknik
             pod miastem, ponieważ nie ogranicza go jedynie asfalt.
           </p>
           <SelectTypeBtn
+            className="link-bikes"
             creationArr={typesArr.filter((type) => type.data === "miejski")}
           />{" "}
         </div>

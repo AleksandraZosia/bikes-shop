@@ -1,20 +1,18 @@
 import { useParams } from "react-router-dom";
 import { stringToUpperCase, bikes } from "./bikesPage";
+import React from "react";
 
-const getBikes = (bikesId) => {
+const getBikesID = (bikesId) => {
   const bikesTypes = bikes.filter((bike) => bike.type.includes(bikesId));
 
   const bikesColors = bikes.filter((bike) => bike.colors.includes(bikesId));
   if (bikesTypes.length !== 0) return bikesTypes;
-  else {
-    return bikesColors;
-  }
+  if (bikesColors.length !== 0) return bikesColors;
 };
 
 export const ShowBikes = () => {
   let params = useParams();
-  const choosenBikes = getBikes(params.bikesID);
-
+  const choosenBikes = getBikesID(params.bikesID);
   return (
     <div className="bike-section">
       {choosenBikes.map((bike) => (
@@ -22,7 +20,8 @@ export const ShowBikes = () => {
           <img className="bike-type-img" src={bike.img} />
 
           <p>
-            {stringToUpperCase(bike.type[0])} - {bike.colors.length}{" "}
+            <strong> {stringToUpperCase(bike.type[0])}</strong> -{" "}
+            {bike.colors.length}{" "}
             {bike.colors.length <= 4 ? "kolory" : "kolorów"} do wyboru
           </p>
           <p>{bike.gears} kombinacje przerzutek</p>
